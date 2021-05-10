@@ -19,6 +19,11 @@ namespace Clamson.Clamd
                 using (FileStream fileStream = File.OpenRead(Filepath)) {
                     ClamdResult clamdResult = ClamdClient.Instream(fileStream);
                     Console.WriteLine($"HasVirus={clamdResult.HasVirus}");
+                    if (clamdResult.HasVirus) {
+                        foreach(InfectedFile InfectedFile in clamdResult.InfectedFiles) {
+                            Console.WriteLine($"Path:{Filepath} FileName:{InfectedFile.FileName} Virus:{InfectedFile.VirusName}");
+                        }
+                    }
                 }
                 // ClamdClient.Shutdown(); 
             }
