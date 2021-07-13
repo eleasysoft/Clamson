@@ -23,7 +23,7 @@ namespace Clamson.Clamd
             TimeSpan timeSpan = TimeSpan.FromSeconds(180);
             if (! t.Wait(timeSpan))
                 throw new TimeoutException();
-            Console.WriteLine("ClamAV server availlable.");
+            Console.WriteLine("ClamAV server available.");
         }
         private static void CheckFile(String Filepath)
         {
